@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
+package com.bootcamp_new.sales;
 
 public class Product {
+
 }

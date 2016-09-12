@@ -1,4 +1,4 @@
-package com.bootcamp.sales;
+package com.bootcamp.sales.products;
 
 public abstract class Product {
 
@@ -8,7 +8,9 @@ public abstract class Product {
     this.price = price;
   }
 
-  abstract public double price();
+  public double price() {
+    return this.price * this.tax();
+  }
 
   public abstract double tax();
 }
