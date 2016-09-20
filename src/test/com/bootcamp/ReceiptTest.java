@@ -1,7 +1,5 @@
-import com.bootcamp.sales.Cart;
-import com.bootcamp.sales.CartItem;
-import com.bootcamp.sales.Inventory;
-import com.bootcamp.sales.Receipt;
+package com.bootcamp.sales;
+
 import com.bootcamp.sales.products.Product;
 import com.bootcamp.sales.products.ProductFactory;
 import org.junit.Test;
