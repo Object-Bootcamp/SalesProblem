@@ -19,4 +19,7 @@ public abstract class Product {
     return this.price * this.taxStrategy.getTax();
   }
 
+  public double priceInclusiveTax(){
+    return this.price + this.tax();
+  }
 }

@@ -16,4 +16,10 @@ public class ProductTest {
     Product product = new ProductBook(12.49);
     assertEquals(product.tax(), 0.0, 0.01);
   }
+
+  @Test
+  public void shouldReturnProductPriceAlongWithTax()  {
+    Product product = new OtherProduct(14.99);
+    assertEquals(product.priceInclusiveTax(), 16.49, 0.01);
+  }
 }
