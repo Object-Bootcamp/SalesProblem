@@ -12,14 +12,22 @@ public class ProductTest {
   }
 
   @Test
-  public void taxShouldNotBeApplicableToBookCategory()  {
+  public void taxShouldNotBeApplicableToBookCategory() {
     Product product = new ProductBook(12.49);
     assertEquals(product.tax(), 0.0, 0.01);
   }
 
   @Test
-  public void shouldReturnProductPriceAlongWithTax()  {
+  public void shouldReturnProductPriceAlongWithTax() {
     Product product = new OtherProduct(14.99);
     assertEquals(product.priceInclusiveTax(), 16.49, 0.01);
+  }
+
+  @Test
+  public void shouldReturnImportedProductPriceWithImportedTax() {
+    Product book = new OtherProduct(40.00);
+    book.imported();
+
+    assertEquals(46.00, book.priceInclusiveTax(), 0.01);
   }
 }

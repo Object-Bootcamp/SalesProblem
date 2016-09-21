@@ -9,5 +9,4 @@ public class ProductBook extends Product {
     super(price);
     this.taxStrategy = new NoTaxStrategy();
   }
-
 }
