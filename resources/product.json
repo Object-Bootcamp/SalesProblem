@@ -1,0 +1,31 @@
+{
+  "cartItems": [
+    {
+      "product": {
+        "imported": false,
+        "name": "some book",
+        "category": "BOOK",
+        "price": 12.49
+      },
+      "quantity": 1
+      },
+    {
+      "product": {
+        "imported": false,
+        "name": "music CD",
+        "category": "OTHER",
+        "price": 14.99
+      },
+      "quantity": 1
+    },
+    {
+      "product": {
+        "imported": false,
+        "name": "chocolate",
+        "category": "FOOD",
+        "price": 0.85
+      },
+      "quantity": 1
+    }
+  ]
+}

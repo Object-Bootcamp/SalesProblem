@@ -1,4 +1,4 @@
-package com.bootcamp_new.sales;
+package com.bootcamp_new.sales.product;
 
 import com.bootcamp_new.sales.taxStrategy.TaxStrategy;
 
@@ -8,8 +8,8 @@ public abstract class Product {
   private double price;
   private boolean imported;
 
-  public Product(double price) {
-    this.imported = false;
+  public Product(double price, boolean imported) {
+    this.imported = imported;
     this.price = price;
   }
 

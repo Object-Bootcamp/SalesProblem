@@ -1,5 +1,6 @@
 package com.bootcamp_new.sales;
 
+import com.bootcamp_new.sales.product.Product;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -50,6 +51,5 @@ public class CartTest {
     assertEquals(cart.tax(), 10, 0.01);
 
   }
-
 
 }
