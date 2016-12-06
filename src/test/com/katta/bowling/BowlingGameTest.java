@@ -7,28 +7,28 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GameTest {
+public class BowlingGameTest {
 
   private RandomNumberGenerator randomNumberGenerator;
-  private Game game;
+  private BowlingGame bowlingGame;
 
   @Before
   public void setUp() throws Exception {
     randomNumberGenerator = mock(RandomNumberGenerator.class);
-    game = new Game(randomNumberGenerator);
+    bowlingGame = new BowlingGame(randomNumberGenerator);
   }
 
   @Test
   public void knock_returns0_whenHit() {
     when(randomNumberGenerator.generate()).thenReturn(0);
-    int knockedPinsCount = game.knockPins();
+    int knockedPinsCount = bowlingGame.knockPins();
     assertEquals(0, knockedPinsCount);
   }
 
   @Test
   public void knock_returns2_whenHit() {
     when(randomNumberGenerator.generate()).thenReturn(2);
-    int knockedPinsCount = game.knockPins();
+    int knockedPinsCount = bowlingGame.knockPins();
     assertEquals(2, knockedPinsCount);
   }
 }

@@ -9,6 +9,19 @@ dependencies {
     testCompile "org.mockito:mockito-core:1.+"
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/java"]
+        }
+    }
+    test {
+        java {
+            srcDirs = ["src/test"]
+        }
+    }
+}
+
 test {
     reports {
         junitXml.enabled = false

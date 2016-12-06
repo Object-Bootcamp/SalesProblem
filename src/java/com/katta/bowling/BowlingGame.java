@@ -1,9 +1,9 @@
 package com.katta.bowling;
 
-public class Game {
+public class BowlingGame {
   private final RandomNumberGenerator randomNumberGenerator;
 
-  public Game(RandomNumberGenerator randomNumberGenerator) {
+  public BowlingGame(RandomNumberGenerator randomNumberGenerator) {
     this.randomNumberGenerator = randomNumberGenerator;
   }
 
