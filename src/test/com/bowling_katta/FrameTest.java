@@ -31,14 +31,14 @@ public class FrameTest {
     }
 
     @Test
-    public void shouldReturnStrikeAsTrueWhenAllPinksKnockedDownInOneTry() {
+    public void shouldReturnStrikeAsTrueWhenAllPinksKnockedDownInOneOfTheAttempt() {
         Frame frame = new Frame();
         frame.attemptWith(10);
         assertThat(frame.isStrike(), is(true));
     }
 
     @Test
-    public void shouldReturnStrikeAsFalseWhenAllPinksKnockedDownInOneTry() {
+    public void shouldReturnStrikeAsFalseWhenAllPinsAreNotKnockedInOneOfTheAttempt() {
         Frame frame = new Frame();
         frame.attemptWith(9);
         assertThat(frame.isStrike(), is(false));
@@ -50,6 +50,15 @@ public class FrameTest {
         frame.attemptWith(9);
         frame.attemptWith(1);
         assertThat(frame.isStrike(), is(false));
+    }
+
+    @Test
+    public void shouldReturnSpareAsFalseWhenAllPinksKnockedOneOfTheAttemp() {
+        Frame frame = new Frame();
+        frame.attemptWith(0);
+        frame.attemptWith(10);
+        assertThat(frame.isSpare(), is(false));
+        assertThat(frame.isStrike(), is(true));
     }
 
     @Test
@@ -84,6 +93,5 @@ public class FrameTest {
 
         assertThat(frame.canPlayNext(), is(true));
     }
-
 
 }

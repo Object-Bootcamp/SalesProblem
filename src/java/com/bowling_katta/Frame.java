@@ -6,15 +6,15 @@ import java.util.function.BinaryOperator;
 
 public class Frame {
 
-    public static final Integer TOTAL_PINS = 10;
-    public static final int MAXIMUM_ATTEMPT_ALLOWED = 2;
+    private static final Integer TOTAL_PINS = 10;
+    private static final int MAXIMUM_ATTEMPT_ALLOWED = 2;
     private final ArrayList<Integer> attempts;
 
     private int attemptCount;
 
     public Frame() {
         this.attemptCount = 0;
-        this.attempts = new ArrayList<Integer>(Arrays.asList(0,0));
+        this.attempts = new ArrayList<>(Arrays.asList(0,0));
     }
 
     public void attemptWith(int knockedPinsCount) {
@@ -23,20 +23,15 @@ public class Frame {
     }
 
     private int getRemainingPins() {
-        return TOTAL_PINS - attempts.stream().reduce(new Integer(0), new BinaryOperator<Integer>() {
-            @Override
-            public Integer apply(Integer val1, Integer val2) {
-                return val1 + val2;
-            }
-        });
+        return TOTAL_PINS - attempts.stream().reduce(0, (val1, val2) -> val1 + val2);
     }
 
     public boolean isSpare() {
-        return (this.attemptCount == MAXIMUM_ATTEMPT_ALLOWED && getRemainingPins() == 0);
+        return (this.attemptCount == MAXIMUM_ATTEMPT_ALLOWED && getRemainingPins() == 0 && !isStrike());
     }
 
     public boolean isStrike() {
-        return (this.attemptCount == 1 && getRemainingPins() == 0);
+        return (this.attempts.contains(10) && getRemainingPins() == 0);
     }
 
     public boolean canPlayNext() {
@@ -44,12 +39,7 @@ public class Frame {
     }
 
     public int score() {
-        return attempts.stream().reduce(new Integer(0), new BinaryOperator<Integer>() {
-            @Override
-            public Integer apply(Integer val1, Integer val2) {
-                return val1 + val2;
-            }
-        });
+        return attempts.stream().reduce(0, (val1, val2) -> val1 + val2);
     }
 
     @Override
@@ -67,8 +57,7 @@ public class Frame {
 
         Frame frame = (Frame) o;
 
-        if (attemptCount != frame.attemptCount) return false;
-        return attempts != null ? attempts.equals(frame.attempts) : frame.attempts == null;
+        return attemptCount == frame.attemptCount && (attempts != null ? attempts.equals(frame.attempts) : frame.attempts == null);
     }
 
     @Override
@@ -76,5 +65,9 @@ public class Frame {
         int result = attempts != null ? attempts.hashCode() : 0;
         result = 31 * result + attemptCount;
         return result;
+    }
+
+    public int knockedPinFirstTry() {
+        return this.attempts.get(0);
     }
 }

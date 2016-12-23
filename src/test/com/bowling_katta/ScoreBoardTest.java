@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.mock;
 
 public class ScoreBoardTest {
 
@@ -60,6 +59,30 @@ public class ScoreBoardTest {
         scoreBoard.roll(5);
         scoreBoard.roll(4);
 
-        assertThat(scoreBoard.score(), is(14));
+        assertThat(scoreBoard.score(), is(24));
+    }
+
+    @Test
+    public void scoreShouldIncludeBonusWhenItsStrike()  {
+        scoreBoard = new ScoreBoard(2);
+        scoreBoard.roll(0);
+        scoreBoard.roll(10);
+        scoreBoard.roll(5);
+        scoreBoard.roll(4);
+
+        assertThat(scoreBoard.score(), is(28));
+    }
+
+    @Test
+    public void scoreShouldIncludeBonusWhenItsStrikeAndSpareInAGame() {
+        scoreBoard = new ScoreBoard(3);
+        scoreBoard.roll(6);
+        scoreBoard.roll(4);
+        scoreBoard.roll(0);
+        scoreBoard.roll(10);
+        scoreBoard.roll(1);
+        scoreBoard.roll(4);
+
+        assertThat(scoreBoard.score(), is(30));
     }
 }

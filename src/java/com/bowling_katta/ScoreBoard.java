@@ -2,8 +2,8 @@ package com.bowling_katta;
 
 import java.util.ArrayList;
 
-public class ScoreBoard {
-    public int FRAME_COUNT;
+class ScoreBoard {
+    private int FRAME_COUNT;
     private ArrayList<Frame> frames;
     private int currentFrameCounter = 0;
 
@@ -18,7 +18,7 @@ public class ScoreBoard {
     public void roll(int knockedPins) {
         Frame currentFrame = getCurrentFrame();
         currentFrame.attemptWith(knockedPins);
-        if(!currentFrame.canPlayNext()) {
+        if (!currentFrame.canPlayNext()) {
             currentFrameCounter++;
         }
     }
@@ -37,10 +37,15 @@ public class ScoreBoard {
 
     public int score() {
         int score = 0;
+        boolean isSpare = false, isStrike = false;
 
-        for(int i =0; i< frames.size(); i++) {
-            Frame frame = frames.get(i);
+        for (Frame frame : frames) {
             score += frame.score();
+            if (isSpare) score += frame.knockedPinFirstTry();
+            if (isStrike) score += frame.score();
+
+            isSpare = frame.isSpare();
+            isStrike = frame.isStrike();
         }
         return score;
     }
