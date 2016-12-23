@@ -3,6 +3,7 @@ package com.katta.bowling;
 
 public class GameController {
     public static final int FRAME_COUNT = 10;
+    public static final int NO_OF_TRIES = 2;
     private final Player player;
     private int score;
 

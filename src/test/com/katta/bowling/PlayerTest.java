@@ -12,8 +12,7 @@ public class PlayerTest {
     BowlingGame bowlingGame = mock(BowlingGame.class);
     when(bowlingGame.knockPins()).thenReturn(2);
 
-    Player player = new Player();
-    player.register_game(bowlingGame);
+    Player player = new Player(bowlingGame);
 
     int pinsKnocked = player.playGame();
     assertEquals(2, pinsKnocked);

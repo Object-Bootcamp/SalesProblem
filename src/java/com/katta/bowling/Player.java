@@ -4,14 +4,12 @@ public class Player {
 
   private BowlingGame bowlingGame;
 
-  public Player() {
+  public Player(BowlingGame bowlingGame) {
+    this.bowlingGame = bowlingGame;
   }
 
   public int playGame() {
     return bowlingGame.knockPins();
   }
 
-  public void register_game(BowlingGame bowlingGame) {
-    this.bowlingGame = bowlingGame;
-  }
 }
