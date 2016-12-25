@@ -14,7 +14,7 @@ public class ScoreBoardTest {
         Frame frame = new Frame();
         frame.attemptWith(6);
 
-        scoreBoard = new ScoreBoard(1);
+        scoreBoard = new ScoreBoard();
         scoreBoard.roll(6);
 
         assertThat(scoreBoard.getFrames().get(0), is(frame));
@@ -29,7 +29,7 @@ public class ScoreBoardTest {
         frameOne.attemptWith(2);
         frameTwo.attemptWith(10);
 
-        scoreBoard = new ScoreBoard(2);
+        scoreBoard = new ScoreBoard();
         scoreBoard.roll(6);
         scoreBoard.roll(2);
         scoreBoard.roll(10);
@@ -42,7 +42,7 @@ public class ScoreBoardTest {
 
     @Test
     public void scoreShouldBeTotalNumberPinsKnockedWhenThereIsNoStrikeOrSpare() {
-        scoreBoard = new ScoreBoard(2);
+        scoreBoard = new ScoreBoard();
         scoreBoard.roll(7);
         scoreBoard.roll(2);
         scoreBoard.roll(2);
@@ -53,7 +53,7 @@ public class ScoreBoardTest {
 
     @Test
     public void scoreShouldIncludeBonusWhenItsSpare()  {
-        scoreBoard = new ScoreBoard(2);
+        scoreBoard = new ScoreBoard();
         scoreBoard.roll(6);
         scoreBoard.roll(4);
         scoreBoard.roll(5);
@@ -64,7 +64,7 @@ public class ScoreBoardTest {
 
     @Test
     public void scoreShouldIncludeBonusWhenItsStrike()  {
-        scoreBoard = new ScoreBoard(2);
+        scoreBoard = new ScoreBoard();
         scoreBoard.roll(0);
         scoreBoard.roll(10);
         scoreBoard.roll(5);
@@ -75,14 +75,35 @@ public class ScoreBoardTest {
 
     @Test
     public void scoreShouldIncludeBonusWhenItsStrikeAndSpareInAGame() {
-        scoreBoard = new ScoreBoard(3);
-        scoreBoard.roll(6);
-        scoreBoard.roll(4);
-        scoreBoard.roll(0);
-        scoreBoard.roll(10);
+        scoreBoard = new ScoreBoard();
         scoreBoard.roll(1);
         scoreBoard.roll(4);
 
-        assertThat(scoreBoard.score(), is(30));
+        scoreBoard.roll(4);
+        scoreBoard.roll(5);
+
+        scoreBoard.roll(6);
+        scoreBoard.roll(4);
+
+        scoreBoard.roll(5);
+        scoreBoard.roll(5);
+
+        scoreBoard.roll(0);
+        scoreBoard.roll(10);
+
+        scoreBoard.roll(0);
+        scoreBoard.roll(1);
+
+        scoreBoard.roll(7);
+        scoreBoard.roll(3);
+
+        scoreBoard.roll(6);
+        scoreBoard.roll(4);
+
+        scoreBoard.roll(8);
+        scoreBoard.roll(2);
+
+
+        assertThat(scoreBoard.score(), is(95));
     }
 }

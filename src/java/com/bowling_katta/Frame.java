@@ -2,7 +2,6 @@ package com.bowling_katta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.function.BinaryOperator;
 
 public class Frame {
 
