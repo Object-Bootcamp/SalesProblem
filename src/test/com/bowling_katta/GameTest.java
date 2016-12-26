@@ -28,7 +28,7 @@ public class GameTest {
         Game game = new Game();
         game.registerPlayer(playerOne);
 
-        assertThat(game.playGame(), is(103));
+        assertThat(game.playGame(), is(96));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class GameTest {
         Game game = new Game();
         game.registerPlayer(dummyPlayer);
 
-        assertThat(game.playGame(), is(103));
+        assertThat(game.playGame(), is(96));
     }
 
 

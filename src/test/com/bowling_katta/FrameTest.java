@@ -53,12 +53,12 @@ public class FrameTest {
     }
 
     @Test
-    public void shouldReturnSpareAsFalseWhenAllPinksKnockedOneOfTheAttemp() {
+    public void shouldReturnSpareAsTrueWhenAllPinksKnockedOneOfTheAttempt() {
         Frame frame = new Frame();
         frame.attemptWith(0);
         frame.attemptWith(10);
-        assertThat(frame.isSpare(), is(false));
-        assertThat(frame.isStrike(), is(true));
+        assertThat(frame.isSpare(), is(true));
+        assertThat(frame.isStrike(), is(false));
     }
 
     @Test

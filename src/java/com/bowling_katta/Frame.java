@@ -30,7 +30,7 @@ public class Frame {
     }
 
     public boolean isStrike() {
-        return (this.attempts.contains(TOTAL_PINS) && getRemainingPins() == 0);
+        return (this.attempts.get(0) == TOTAL_PINS );
     }
 
     public boolean canPlayNext() {

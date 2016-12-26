@@ -65,7 +65,6 @@ public class ScoreCardTest {
     @Test
     public void scoreShouldIncludeBonusWhenItsStrike()  {
         scoreCard = new ScoreCard(2);
-        scoreCard.roll(0);
         scoreCard.roll(10);
         scoreCard.roll(5);
         scoreCard.roll(4);
@@ -106,7 +105,7 @@ public class ScoreCardTest {
         scoreCard.roll(2);
         scoreCard.roll(6);
 
-        assertThat(scoreCard.score(), is(103));
+        assertThat(scoreCard.score(), is(96));
     }
 
     @Test
