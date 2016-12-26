@@ -2,12 +2,13 @@ package com.bowling_katta;
 
 import java.util.ArrayList;
 
-class ScoreBoard {
-    private int FRAME_COUNT = 10;
+class ScoreCard {
+    private int FRAME_COUNT;
     private ArrayList<Frame> frames;
     private int currentFrameCounter = 0;
 
-    public ScoreBoard() {
+    public ScoreCard(int frameCount) {
+        this.FRAME_COUNT = frameCount;
         this.frames = new ArrayList<>();
         for (int i = 0; i < FRAME_COUNT; i++) {
             frames.add(i, new Frame());
@@ -46,6 +47,12 @@ class ScoreBoard {
             isSpare = frame.isSpare();
             isStrike = frame.isStrike();
         }
+
         return score;
     }
+
+    public boolean canRoll() {
+        return currentFrameCounter < FRAME_COUNT;
+    }
+
 }

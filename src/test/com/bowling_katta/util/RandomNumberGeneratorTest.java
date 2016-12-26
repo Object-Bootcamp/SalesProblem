@@ -1,4 +1,4 @@
-package com.bowling_katta;
+package com.bowling_katta.util;
 
 import org.junit.Test;
 
