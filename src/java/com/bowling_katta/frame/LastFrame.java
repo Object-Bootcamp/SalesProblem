@@ -14,17 +14,17 @@ public class LastFrame extends Frame {
 
     @Override
     public boolean isSpare() {
-        return false;
+        return (attemptCount == 2 && getRemainingPins() == 0);
     }
 
     @Override
     public boolean isStrike() {
-        return false;
+        return (attempts.get(0) == TOTAL_PINS);
     }
 
     @Override
     public boolean canPlayNext() {
-        return (this.attemptCount < MAXIMUM_ATTEMPT_ALLOWED && getRemainingPins() != 0);
+        return (this.isSpare() || this.isStrike() || (getRemainingPins() !=0 && attemptCount == 1));
     }
 
     @Override

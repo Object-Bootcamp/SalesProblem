@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 public class ScoreCardTest {
 
@@ -32,11 +31,15 @@ public class ScoreCardTest {
         frameOne.attemptWith(6);
         frameOne.attemptWith(2);
         frameTwo.attemptWith(10);
+        frameTwo.attemptWith(4);
+        frameTwo.attemptWith(3);
 
         scoreCard = new ScoreCard(2);
         scoreCard.roll(6);
         scoreCard.roll(2);
         scoreCard.roll(10);
+        scoreCard.roll(4);
+        scoreCard.roll(3);
 
         assertThat(scoreCard.getFrames().get(0), is(frameOne));
         assertThat(scoreCard.getFrames().get(1), is(frameTwo));
@@ -118,8 +121,8 @@ public class ScoreCardTest {
         scoreCard.roll(1);
         scoreCard.roll(2);
 
-        scoreCard.roll(2);
-        scoreCard.roll(2);
+        scoreCard.roll(6);
+        scoreCard.roll(4);
         scoreCard.roll(2);
 
         assertThat(scoreCard.canRoll(), is(false));
