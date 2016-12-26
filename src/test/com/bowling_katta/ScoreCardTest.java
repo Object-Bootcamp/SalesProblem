@@ -1,17 +1,21 @@
 package com.bowling_katta;
 
+import com.bowling_katta.frame.Frame;
+import com.bowling_katta.frame.LastFrame;
+import com.bowling_katta.frame.NormalFrame;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 public class ScoreCardTest {
 
     private ScoreCard scoreCard;
 
     @Test
-    public void rollShouldUpdateFrameWhenPinsKnockedForAFrame()  {
-        Frame frame = new Frame();
+    public void rollShouldUpdateFrameWhenPinsKnockedForAFrame() {
+        Frame frame =new NormalFrame();
         frame.attemptWith(6);
 
         scoreCard = new ScoreCard(1);
@@ -23,8 +27,8 @@ public class ScoreCardTest {
 
     @Test
     public void scoreBoardShouldUpdateFrameWhenPinsKnockedForAFrames() {
-        Frame frameOne = new Frame();
-        Frame frameTwo = new Frame();
+        Frame frameOne =new NormalFrame();
+        Frame frameTwo =new LastFrame();
         frameOne.attemptWith(6);
         frameOne.attemptWith(2);
         frameTwo.attemptWith(10);
@@ -52,7 +56,7 @@ public class ScoreCardTest {
     }
 
     @Test
-    public void scoreShouldIncludeBonusWhenItsSpare()  {
+    public void scoreShouldIncludeBonusWhenItsSpare() {
         scoreCard = new ScoreCard(2);
         scoreCard.roll(6);
         scoreCard.roll(4);
@@ -63,7 +67,7 @@ public class ScoreCardTest {
     }
 
     @Test
-    public void scoreShouldIncludeBonusWhenItsStrike()  {
+    public void scoreShouldIncludeBonusWhenItsStrike() {
         scoreCard = new ScoreCard(2);
         scoreCard.roll(10);
         scoreCard.roll(5);
@@ -113,8 +117,23 @@ public class ScoreCardTest {
         ScoreCard scoreCard = new ScoreCard(2);
         scoreCard.roll(1);
         scoreCard.roll(2);
+
         scoreCard.roll(2);
         scoreCard.roll(2);
+        scoreCard.roll(2);
+
         assertThat(scoreCard.canRoll(), is(false));
+    }
+
+    @Test
+    public void shouldCreateLastFrameWithThreeTriesWhenItsLastFrame() {
+        ScoreCard scoreCard = new ScoreCard(2);
+        scoreCard.roll(1);
+        scoreCard.roll(2);
+        scoreCard.roll(2);
+        scoreCard.roll(2);
+
+//        assertThat(scoreCard.getFrames().get(0).getClass(), instanceOf(NormalFrame.class));
+//        assertThat(scoreCard.getFrames().get(1).getClass(), instanceOf(LastFrame.class));
     }
 }

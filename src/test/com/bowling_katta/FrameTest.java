@@ -1,5 +1,7 @@
 package com.bowling_katta;
 
+import com.bowling_katta.frame.Frame;
+import com.bowling_katta.frame.NormalFrame;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -9,7 +11,7 @@ public class FrameTest {
 
     @Test
     public void shouldReturnSpareAsTrueWhenAllPinksKnockedDownInTwoTries() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(8);
         frame.attemptWith(2);
         assertThat(frame.isSpare(), is(true));
@@ -17,14 +19,14 @@ public class FrameTest {
 
     @Test
     public void shouldReturnSpareAsFalseWhenAllPinksKnockedDownInOneTry() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(10);
         assertThat(frame.isSpare(), is(false));
     }
 
     @Test
     public void shouldReturnSpareASFalseWhenAllPinsNotKnockedInTwoTries() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(5);
         frame.attemptWith(4);
         assertThat(frame.isSpare(), is(false));
@@ -32,21 +34,21 @@ public class FrameTest {
 
     @Test
     public void shouldReturnStrikeAsTrueWhenAllPinksKnockedDownInOneOfTheAttempt() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(10);
         assertThat(frame.isStrike(), is(true));
     }
 
     @Test
     public void shouldReturnStrikeAsFalseWhenAllPinsAreNotKnockedInOneOfTheAttempt() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(9);
         assertThat(frame.isStrike(), is(false));
     }
 
     @Test
     public void shouldReturnStrikeAsFalseWhenAllPinksKnockedDownInTwoTry() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(9);
         frame.attemptWith(1);
         assertThat(frame.isStrike(), is(false));
@@ -54,7 +56,7 @@ public class FrameTest {
 
     @Test
     public void shouldReturnSpareAsTrueWhenAllPinksKnockedOneOfTheAttempt() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(0);
         frame.attemptWith(10);
         assertThat(frame.isSpare(), is(true));
@@ -63,7 +65,7 @@ public class FrameTest {
 
     @Test
     public void shouldReturnCanPlayNextAsFalseIfAlreadyAttemptedTwoTry() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(7);
         frame.attemptWith(1);
 
@@ -72,7 +74,7 @@ public class FrameTest {
 
     @Test
     public void shouldReturnCanPlayNextAsTrueIfAttemptArePending() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(9);
 
         assertThat(frame.canPlayNext(), is(true));
@@ -80,7 +82,7 @@ public class FrameTest {
 
     @Test
     public void shouldReturnCanPlayNextAsFalseIfItsAStrike() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(10);
 
         assertThat(frame.canPlayNext(), is(false));
@@ -88,7 +90,7 @@ public class FrameTest {
 
     @Test
     public void shouldReturnCanPlayNextAsTrue() {
-        Frame frame = new Frame();
+        Frame frame = new NormalFrame();
         frame.attemptWith(9);
 
         assertThat(frame.canPlayNext(), is(true));

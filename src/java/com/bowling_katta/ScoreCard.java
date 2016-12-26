@@ -1,5 +1,9 @@
 package com.bowling_katta;
 
+import com.bowling_katta.frame.Frame;
+import com.bowling_katta.frame.LastFrame;
+import com.bowling_katta.frame.NormalFrame;
+
 import java.util.ArrayList;
 
 class ScoreCard {
@@ -10,7 +14,7 @@ class ScoreCard {
     public ScoreCard(int frameCount) {
         this.FRAME_COUNT = frameCount;
         this.frames = new ArrayList<>(FRAME_COUNT);
-        frames.add(currentFrameCounter, new Frame());
+        frames.add(currentFrameCounter, new NormalFrame());
     }
 
     public void roll(int knockedPins) {
@@ -24,7 +28,10 @@ class ScoreCard {
     private void updateFrame() {
         currentFrameCounter++;
         if (canRoll())
-            frames.add(currentFrameCounter, new Frame());
+            if (currentFrameCounter == FRAME_COUNT-1 )
+                frames.add(currentFrameCounter, new LastFrame());
+            else
+                frames.add(currentFrameCounter, new NormalFrame());
     }
 
     private Frame getCurrentFrame() {
