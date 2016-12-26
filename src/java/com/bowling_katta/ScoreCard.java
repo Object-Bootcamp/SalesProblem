@@ -9,18 +9,22 @@ class ScoreCard {
 
     public ScoreCard(int frameCount) {
         this.FRAME_COUNT = frameCount;
-        this.frames = new ArrayList<>();
-        for (int i = 0; i < FRAME_COUNT; i++) {
-            frames.add(i, new Frame());
-        }
+        this.frames = new ArrayList<>(FRAME_COUNT);
+        frames.add(currentFrameCounter, new Frame());
     }
 
     public void roll(int knockedPins) {
         Frame currentFrame = getCurrentFrame();
         currentFrame.attemptWith(knockedPins);
         if (!currentFrame.canPlayNext()) {
-            currentFrameCounter++;
+            updateFrame();
         }
+    }
+
+    private void updateFrame() {
+        currentFrameCounter++;
+        if (canRoll())
+            frames.add(currentFrameCounter, new Frame());
     }
 
     private Frame getCurrentFrame() {
