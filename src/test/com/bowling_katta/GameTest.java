@@ -23,7 +23,7 @@ public class GameTest {
                 6, 4, 5, 5,
                 0, 10, 0, 1,
                 7, 3, 6, 4,
-                0, 10, 2, 6};
+                0, 10, 2, 6, 0};
         CustomPlayer playerOne =  new CustomPlayer("Some Name", rolls);
         Game game = new Game();
         game.registerPlayer(playerOne);
@@ -40,7 +40,7 @@ public class GameTest {
                                       .thenReturn(6).thenReturn(4).thenReturn(5).thenReturn(5)
                                       .thenReturn(0).thenReturn(10).thenReturn(0).thenReturn(1)
                                       .thenReturn(7).thenReturn(3).thenReturn(6).thenReturn(4)
-                                      .thenReturn(0).thenReturn(10).thenReturn(2).thenReturn(6);
+                                      .thenReturn(0).thenReturn(10).thenReturn(2).thenReturn(6).thenReturn(0);
 
         Game game = new Game();
         game.registerPlayer(dummyPlayer);
