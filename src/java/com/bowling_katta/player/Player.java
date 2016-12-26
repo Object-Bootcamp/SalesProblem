@@ -1,5 +1,5 @@
 package com.bowling_katta.player;
 
-public interface Player {
-     int throwBall();
+public abstract class Player {
+     public abstract int throwBall();
 }

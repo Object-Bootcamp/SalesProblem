@@ -1,6 +1,6 @@
 package com.bowling_katta.player;
 
-public class CustomPlayer implements Player {
+public class CustomPlayer extends Player {
     private final String name;
     private final Integer[] rolls;
     private int rollCounter;

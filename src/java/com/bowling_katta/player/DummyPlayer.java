@@ -2,7 +2,7 @@ package com.bowling_katta.player;
 
 import com.bowling_katta.util.RandomNumberGenerator;
 
-public class DummyPlayer implements Player {
+public class DummyPlayer extends Player {
 
     private RandomNumberGenerator randomNumberGenerator;
 
